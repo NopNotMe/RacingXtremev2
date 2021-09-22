@@ -1,0 +1,95 @@
+###################################################
+#  		 MAJOR FEATURES  (made or not)      	  #
+###################################################
+
+1) A player can win as many time he wants but only the first is shown, this doesn't take other places and if the player beat his previous time, a message is displayed and the time is replaced by the new one
+2) If a player comes to the podium but all the places are taken, a message is displayed to him showing his position and telling him that only the top 3 is shown
+3) At the intermission, special rewards: most deaths, in-a-row wins, win with no dies.
+4) At the intermission, xp ranking displaying top 3 players xp on the server and displaying position for others
+5) Local time for each players triggered by death/map start (used for best run)
+6) Global time counting from map start (used to display when from the start of the map the players won the differents places)
+5) If a client didn't made the best run, still show personal client time for comparison
+6) At the start of each race, an event can be triggered randomly: it consists of little chalenges: you win only if you don't die, you can kill other players, you have a limited time to win, only one person can win)
+7) In addition to actual events, there is secret reversed_or_not_event (only a message telling a secret event has been triggered), which can be reversed player win order default win order,
+8) Admin can force a map to be played using #forcemap mapname command
+9) Map rotation is generated and reset randomly
+10) Server recognize website registered people and allow them to register new bests runs, keep a complete race tracking historic with personal bests runs and global xp ranking
+
+###################################################
+#             Work in progress                    #
+###################################################
+       - ADD Global time function managed by handlers
+ DONE  - FIX check if player disconnect, check if he won before and clear it if it's the case
+       - ADD GAME_EVENTS function ()
+ DONE  - FIX hasedited var not initialized problem
+ DONE  - FIX reset of hasedited var without getting map or reconnecting
+       - ADD special rewards (most deaths, in-a-row wins, win with no dies, gamespeed modifier)
+       - ADD XP ranking
+ 1/2   - ADD best score and XP database
+ 1/2   - ADD race website with in-real-time sync with best score database and XP database
+ DONE  - FIX mapsucks command available only after countdown and ADD vote counter to it
+ DONE  - FIX no multiple times for client support
+ DONE  - MAKE some code cleanups
+ DONE   - MAKE record registration works only for people registered on website
+ DONE  - MAKE a player win has many time he wants but only keep if it's beating his previous time
+       - ADD  under 'Your best'  tab the difference between the record and his score if the player didn't beat it
+ DONE  - FIX mapsucks cn of client need to be reseted if he disconnects
+ DONE  - FIX server sending map either if the client already have it (need to edit source)
+	   - MAKE separate stats function if the best is from the database
+ DONE  - FIX unknown command when player edit and suicide
+ 1/2   - MAKE registered player changing their name, affecting the server display of runs and awards but keeping default username for database bests runs and stats tracking
+###################################################
+#                 Bug Fix                         #
+###################################################
+	- FIX when reloading rotation list, prevent last 10 maps to be the first new 10 maps of the new rotation
+	- FIX ALL THESE BUGS : http://pastebin.com/05dHxy0D
+
+###################################################
+#                Bug Fixed                        #
+###################################################
+	- BUG Some registered users claimed unknown as %u > Fixed comit 6a7ca79
+
+###################################################
+#            FEATURES TO DO                       #
+###################################################
+  - ADD MODIFIED MOD EDIT, EACH PLAYER CAN IN A LIMITED AMOUT OF MOVeS EDIT THE MAP (teleport are forbidden) and be the first to the podium :)
+  - ADD mail sending to auth and admins when new maps uploaded to xtest (can be tweak via server settings)
+  - ADD maprocks command to see how many people like a map (influence rotation)
++	- ADD possibilty to vote for a racemap, with 3 differents map saying the number in the chat and possibility to restart the current map by saying "again" in the chat > Mapbattle
+	- ADD ANTI BLOCKING FEATURE!!
+	- PRIVACY MOD SHOULD WORK ONLY FOR NORMAL PLAYER -> AUTH SHOULD SEE HIDDEN AUTH AND ADMIN HIDDEN ADMIN OR AUTH -> maybe with a cmd ? Like #privs ?
+	- ADD when you spawn, say when your time is equal to the actual best if exists
+	- ADD difference when player win from his score and the best one and display if it's a new record
+	- ADD race table where there is top 5 players beating them
+	- ADD #topbest saying who owns most records
+	- ADD an option to see your personal score for this map and how many records do you hold > #stats cmd ?
+	- ADD level system with xp
+	- ADD map database with their top 5 best runs, num of mapsucks 
+	- ADD nextmap command to skip a map too hard, if no arg specified, behaves like mapsucks, but if mapname specified add the mapanem in to the map battle, if you are admin or alone, it will directly set the next map in the rotation to the one specified
+	- ADD mapsucks reserved for registered users and will influence the chances of the map to stay on the rotation
+	- ADD possibility of doing duel: behaves like flagrun.me (5min 
+of race, no places, only best time)
+	- ADD a way to get his place back if reconnect before 10 seconds
+	- ADD showing when racing when the player has reached the best run limit: "You passed the best run (13.344s)"
+	- ADD Secret areas (trigger when player reaches a position)
+	- ADD losing XP on death
+	- ADD TOP 3 records for each map (1 per player)
+	- ADD name protection
+	- ADD to Xbot the ability to say the best time for whatever map a player ask
+	- ADD racing profile loaded when player connect and applying preferencies choosed by the racer (always ghost, ghost on certain map etc)
+	- ADD RCS (Sauerbraten Racing Championship) : 3 modes: Duel 
+(5min to do the best time possible on a chosen map) Normal (10 maps and trying to earn the most xp and rewards) and Chalenge (Normal + Random events)
+	- ADD USER PREFERENCIES: chosing on which map you want raceghost enabled and with which option, if you want to auto suicide when you come at the podium and more!
+	- ADD some race commands to irc like #best
+	- ADD NEW RACE MODE: EFFIC RACE WITH ALL WEAPONS, ENCOURAGE RACERS TO DO MAP LIKE THAT
+	- ADD mapsucks if player disconnect change map (number of votes / voter is enough ofc)
+	- ADD on raceghost change lag to ghost
+	- ADD ALL-WEAPONS EVENTS MOD
+	- ADD theme support create theme by keeping same arragement but by adding variables like $warning $important $new etc.
+	- ADD a way on the website to customize server colors (working with theme)
+	- ADD afk infos system (if someone say afk or afk [something] you can ask Xbot the reason for the player but if he says back or unspec or leave remove it (listadd $afklist $playername) or listdel etc)
+###################################################
+#          Others stuffs to do                    #
+###################################################
+	- MERGE CODE TO GITHUB: https://coderwall.com/p/ufxjgg/move-repo-from-bitbucket-to-github
+	- Add a way to be able to upload maps on website > Submit map formula for registered user

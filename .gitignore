@@ -1,0 +1,15 @@
+# Ignore binary files
+remod
+remod64
+
+# Ignore anything compiled
+*.o
+*.a
+
+# config
+server-init.cfg
+
+# unnecessary
+.vscode
+.deps
+.libs
